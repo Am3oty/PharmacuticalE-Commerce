@@ -1,0 +1,46 @@
+﻿@model IEnumerable<PharmacuticalE_Commerce.Models.Branch>
+
+@{
+    ViewBag.PageTitle = "Branches";
+    ViewBag.CardTitle = "Branches List";
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_StaffManagementLayout.cshtml";
+}
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table" id="BranchesList">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.BranchId" class="btn btn-warning">Edit</a>&nbsp;&nbsp;&nbsp;
+                <a asp-action="Delete" asp-route-id="@item.BranchId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
